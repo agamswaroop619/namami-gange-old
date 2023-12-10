@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Sarv Gange: an AI Chatbot',
+  title: 'नमामि गंगे:संवादकृत्',
   description: 'Introducing Namami Gange, your virtual guide to the revitalization journey of the sacred Ganges River! This AI chatbot is here to provide you with real-time updates, insightful information, and engaging conversations about the Namami Gange initiative.',
 }
 
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="sa">
       <body className={inter.className}>{children}</body>
     </html>
   )
