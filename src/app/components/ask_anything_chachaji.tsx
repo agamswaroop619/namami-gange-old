@@ -3,7 +3,7 @@ export default function ask_anything_chachaji() {
   return (
     <div
       id="AskAnyhtingRoot"
-      className="relative flex flex-row justify-end w-full items-start pt-6 px-24"
+      className="relative flex flex-row justify-end items-start"
     >
       <div className="text-center text-6xl font-['Luckiest_Guy'] text-black/78 absolute top-0 left-0 h-32 w-[510px]">
         Ask anything to
