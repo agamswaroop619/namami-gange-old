@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Namami Gange: Revitalizing the Sacred Flow',
-  description: 'Namami Gange is a government-led initiative in India aimed at cleaning and rejuvenating the Ganges River. The Ganges, also known as the Ganga, is one of the holiest rivers in Hinduism and holds significant cultural and religious importance in India.',
+  title: 'Sarve Gange: an AI Chatbot',
+  description: 'Introducing Namami Gange, your virtual guide to the revitalization journey of the sacred Ganges River! This AI chatbot is here to provide you with real-time updates, insightful information, and engaging conversations about the Namami Gange initiative.',
 }
 
 export default function RootLayout({
