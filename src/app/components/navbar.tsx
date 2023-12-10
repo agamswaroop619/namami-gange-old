@@ -1,5 +1,4 @@
 import React from "react";
-import Image from 'next/image';
 export default function Navbar() 
 {
   return (
@@ -14,11 +13,10 @@ export default function Navbar()
             alt="Vector"
             className="w-16"
           />
-          <div>
-         <h1>SVG Image in Next.js</h1>
-         {/* Use the Image component with the src attribute pointing to the SVG file */}
-         <Image src=".../next/public/output_image.svg" alt="ClipPathGroup" width={300} height={200} />
-         </div>
+         <img
+            src="https://file.rendit.io/n/hX7FxvoMl3lZr8c3TSVa.svg"
+            alt="ClipPathGroup"
+          />
          </div>
          <img
           src="https://file.rendit.io/n/9k7msNM2ENT1jEOy9aU9.png"
