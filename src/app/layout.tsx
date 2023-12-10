@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Sarve Gange: an AI Chatbot',
+  title: 'Sarv Gange: an AI Chatbot',
   description: 'Introducing Namami Gange, your virtual guide to the revitalization journey of the sacred Ganges River! This AI chatbot is here to provide you with real-time updates, insightful information, and engaging conversations about the Namami Gange initiative.',
 }
 
