@@ -6,7 +6,7 @@ export default function Chachajifull() {
     <Image
       src={chachaji}
       alt="vfda"
-      className="min-w-[90%] overflow-hidden mix-blend-multiply absolute bottom-0"
+      className="min-w-[90%] overflow-hidden absolute bottom-0"
     />
   );
 }
