@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import Navbar from "../components/navbar";
 import Textinput from "../components/textinput";
 export default function Home() {
