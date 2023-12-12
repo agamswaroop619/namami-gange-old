@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 
 interface TextinputProps {
-  // Define any props that your component might need
+  onReceiveMessage: (message: string) => void;
 }
 
-const Textinput: React.FC<TextinputProps> = () => {
+const Textinput: React.FC<TextinputProps> = ({ onReceiveMessage }) => {
   const [question, setQuestion] = useState<string>("");
   const [answer, setAnswer] = useState<string>("");
 
@@ -18,7 +18,10 @@ const Textinput: React.FC<TextinputProps> = () => {
       body: JSON.stringify({ prompt: question }),
     })
       .then((response) => response.text())
-      .then((data) => setAnswer(data))
+      .then((data) => {
+        setAnswer(data);
+        onReceiveMessage(data); // Pass the received message to the parent component
+      })
       .catch((error) => {
         console.error("Error:", error);
       });
