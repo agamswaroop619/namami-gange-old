@@ -4,9 +4,9 @@ import Image from "next/image";
 export default function ask_anything_chachaji() {
   return (
     <Image
-    src={askanthing}
+      src={askanthing}
       alt=""
-      className="min-w-full overflow-hidden absolute top-0 mix-blend-multiply"
+      className="moverflow-hidden absolute top-0 mix-blend-multiply"
     />
   );
 }

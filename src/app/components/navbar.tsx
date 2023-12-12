@@ -15,7 +15,7 @@ export default function Navbar() {
           <img
             src="https://file.rendit.io/n/hX7FxvoMl3lZr8c3TSVa.svg"
             alt="ClipPathGroup"
-            className=" h-[7vh]"
+            className="h-[7vh]"
           />
         </div>
         <img
