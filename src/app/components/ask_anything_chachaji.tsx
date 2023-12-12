@@ -6,7 +6,7 @@ export default function ask_anything_chachaji() {
     <Image
       src={askanthing}
       alt=""
-      className="moverflow-hidden absolute top-0 mix-blend-multiply"
+      className="moverflow-hidden absolute top-0 mix-blend-multiply scale-75 top-[10vh]"
     />
   );
 }
