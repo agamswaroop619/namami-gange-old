@@ -1,21 +1,40 @@
-export default function TextInput() {
+"use client";
+import React, { useState } from "react";
+
+interface TextinputProps {
+  // Define any props that your component might need
+}
+
+const Textinput: React.FC<TextinputProps> = () => {
+  const [question, setQuestion] = useState<string>("");
+  const [answer, setAnswer] = useState<string>("");
+
+  const askQuestion = () => {
+    fetch("http://localhost:3000/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt: question }),
+    })
+      .then((response) => response.text())
+      .then((data) => setAnswer(data))
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   return (
     <div>
-      <label className="form-control w-full max-w-xs">
-        <div className="label">
-          <span className="label-text">What is your name?</span>
-          <span className="label-text-alt">Top Right label</span>
-        </div>
-        <input
-          type="text"
-          placeholder="Type here"
-          className="input input-bordered w-full max-w-xs"
-        />
-        <div className="label">
-          <span className="label-text-alt">Bottom Left label</span>
-          <span className="label-text-alt">Bottom Right label</span>
-        </div>
-      </label>
+      <input
+        type="text"
+        value={question}
+        onChange={(e) => setQuestion(e.target.value)}
+      />
+      <button onClick={askQuestion}>Ask</button>
+      <p>{answer}</p>
     </div>
   );
-}
+};
+
+export default Textinput;
