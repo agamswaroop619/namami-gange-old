@@ -34,6 +34,8 @@ const Textinput: React.FC<TextinputProps> = ({ onReceiveMessage }) => {
         type="text"
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
+        placeholder="Chachaji se poochey"
+        className="input input-bordered w-full max-w-xs"
       />
       <button onClick={askQuestion}>Ask</button>
       <p>{answer}</p>
