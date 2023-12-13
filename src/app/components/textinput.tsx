@@ -10,7 +10,8 @@ const Textinput: React.FC<TextinputProps> = ({ onReceiveMessage }) => {
   const [answer, setAnswer] = useState<string>("");
 
   const askQuestion = () => {
-    fetch("http://localhost:3000/chat", {
+    console.log("hello");
+    fetch("/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -12,15 +12,15 @@ app.use(express.json());
 
 // Create an instance of the OpenAI class with the API key from environment variables
 const openai = new OpenAI({
-  apiKey: process.env.OPEN_API_KEY as string,
+  apiKey: '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',
 });
 
 // Define the endpoint for handling chat requests
-app.post('/chat', async (req: express.Request, res: express.Response) => {
+app.get('/chat', async (req: express.Request, res: express.Response) => {
   try {
     // Extract the prompt from the request body
-    const prompt = req.body.prompt;
-
+    // const prompt = req.body.prompt;
+    const prompt = req.query.q! as string 
     // Use the OpenAI GPT-3 API to generate a response
     const gptResponse = await openai.chat.completions.create({
       model: 'text-davinci-002',
@@ -51,3 +51,5 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+default export app;
