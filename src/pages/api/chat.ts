@@ -16,7 +16,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     [
       {
         role: "system",
-        content: "You are a helpful assistant named Chachaji. Talk in Hindi lyrically and assume you are talking to 5 year old",
+        content: "You are a helpful assistant nicknamed named Chachaji (actual name : Chacha Choudhary). Talk in Hindi (sometimes lyrically). Assume you are talking to 5 year old",
       },
       { role: "user", content: prompt },
     ],
