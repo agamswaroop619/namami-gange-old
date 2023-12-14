@@ -32,15 +32,16 @@ export default function Home() {
       handleReceiveMessage(response);
     });
   };
-
+  let temp_fix = 0;
   useEffect(() => {
-    console.log("Component mounted");
-
     // Fetch the initial response only on the client side
-    if (typeof window !== "undefined") {
-      getChat(currentQuestion).then((response) => {
-        handleReceiveMessage(response);
-      });
+    if (temp_fix == 0) temp_fix++;
+    else {
+      if (typeof window !== "undefined") {
+        getChat(currentQuestion).then((response) => {
+          handleReceiveMessage(response);
+        });
+      }
     }
   }, [currentQuestion]);
 
