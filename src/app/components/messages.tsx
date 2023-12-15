@@ -26,7 +26,7 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
               />
             </div>
           </div>
-          <div className="chat-footer py-1">
+          <div className="chat-footer">
             {message.fromUser ? "You" : "Chachaji"}
           </div>
           <div className="chat-bubble">{message.text}</div>

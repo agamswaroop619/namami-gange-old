@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@azure/openai": "1.0.0-beta.8",
+    "microsoft-cognitiveservices-speech-sdk": "^1.34.0",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18"
