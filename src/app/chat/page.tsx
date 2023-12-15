@@ -1,4 +1,3 @@
-// Home.tsx
 "use client";
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
@@ -18,28 +17,34 @@ function getChat(prompt: string = "Give a small introduction in of yours") {
 }
 
 export default function Home() {
-  const [receivedMessages, setReceivedMessages] = useState<string[]>([]);
+  const [receivedMessages, setReceivedMessages] = useState<
+    { text: string; fromUser: boolean }[]
+  >([]);
   const [currentQuestion, setCurrentQuestion] = useState<string>(
     "Give a small introduction in of yours"
   );
 
-  const handleReceiveMessage = (message: string) => {
-    setReceivedMessages((prevMessages) => [...prevMessages, message]);
+  const handleReceiveMessage = (message: string, fromUser: boolean) => {
+    setReceivedMessages((prevMessages) => [
+      ...prevMessages,
+      { text: message, fromUser },
+    ]);
   };
 
   const updateMessages = (question: string) => {
+    handleReceiveMessage(question, true); // User's question
     getChat(question).then((response) => {
-      handleReceiveMessage(response);
+      handleReceiveMessage(response, false); // Chatbot's response
     });
   };
+
   let temp_fix = 0;
   useEffect(() => {
-    // Fetch the initial response only on the client side
-    if (temp_fix == 0) temp_fix++;
+    if (temp_fix === 0) temp_fix++;
     else {
       if (typeof window !== "undefined") {
         getChat(currentQuestion).then((response) => {
-          handleReceiveMessage(response);
+          handleReceiveMessage(response, false);
         });
       }
     }
@@ -47,8 +52,6 @@ export default function Home() {
 
   useEffect(() => {
     console.log("currentQuestion changed:", currentQuestion);
-
-    // Fetch the response for the updated question and update messages
     if (currentQuestion !== "Give a small introduction in of yours") {
       updateMessages(currentQuestion);
     }
@@ -58,7 +61,7 @@ export default function Home() {
     <main className="flex min-h-[100vh] flex-col items-center justify-between min-w-[100vw] bg-[#B6D3FE] absolute">
       <Navbar />
       <Messages messages={receivedMessages} />
-      <Textinput setQuestion={setCurrentQuestion} />
+      <Textinput setQuestion={setCurrentQuestion} onAskQuestion={() => {}} />
     </main>
   );
 }

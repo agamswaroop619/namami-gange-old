@@ -3,17 +3,20 @@
 import React, { useState } from "react";
 
 interface TextinputProps {
-  setQuestion: (question: string) => void; // Update this line
+  setQuestion: (question: string) => void;
+  onAskQuestion: () => void;
 }
 
-const Textinput: React.FC<TextinputProps> = ({ setQuestion }) => {
+const Textinput: React.FC<TextinputProps> = ({
+  setQuestion,
+  onAskQuestion,
+}) => {
   const [question, setQuestionLocal] = useState<string>("");
 
   const handleAskQuestion = () => {
-    // Pass the question to the parent component
     setQuestion(question);
-    // Clear the input field after asking the question
     setQuestionLocal("");
+    onAskQuestion();
   };
 
   return (
