@@ -1,4 +1,3 @@
-// Textinput.tsx
 "use client";
 import React, { useState } from "react";
 
@@ -20,7 +19,7 @@ const Textinput: React.FC<TextinputProps> = ({
   };
 
   return (
-    <div className="flex relative w-[90vw] px-2">
+    <div className="flex relative w-[100vw] px-2">
       <input
         type="text"
         value={question}
@@ -33,6 +32,10 @@ const Textinput: React.FC<TextinputProps> = ({
         className="input input-bordered w-16 rounded-tr-full rounded-br-full"
       >
         Ask
+      </button>
+      <button className="input input-bordered rounded-full">
+        REC
+        <span className="text-red-500 ">●</span>
       </button>
     </div>
   );

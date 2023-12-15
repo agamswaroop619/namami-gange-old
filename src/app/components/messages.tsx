@@ -1,4 +1,3 @@
-// Messages.tsx
 import React from "react";
 
 interface MessagesProps {
