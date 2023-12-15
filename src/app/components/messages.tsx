@@ -18,17 +18,17 @@ const Messages: React.FC<MessagesProps> = ({ messages }) => {
                 alt={message.fromUser ? "User Avatar" : "Chatbot Avatar"}
                 src={
                   message.fromUser
-                    ? "User Avatar"
+                    ? "https://cdn-icons-png.flaticon.com/512/1154/1154439.png"
                     : "https://media.licdn.com/dms/image/C4D0BAQEkWJOoS8iGLA/company-logo_200_200/0/1630516424447?e=2147483647&v=beta&t=KrmED5uJgzXgITjPsFnID5PE7oPNMy5k1BMUwqIlasc"
                 }
-                className="scale-150"
+                className={message.fromUser ? "scale-100" : "scale-150"}
               />
             </div>
           </div>
           <div className="chat-footer">
             {message.fromUser ? "You" : "Chachaji"}
           </div>
-          <div className="chat-bubble">{message.text}</div>
+          <div className="chat-bubble text-xl">{message.text}</div>
         </div>
       ))}
     </div>
