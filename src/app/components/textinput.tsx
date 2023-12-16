@@ -48,7 +48,7 @@ const Textinput: React.FC<TextinputProps> = ({
   };
 
   return (
-    <div className="flex relative w-[100vw] px-2">
+    <div className="flex w-[100vw] px-2 fixed bottom-0">
       <input
         type="text"
         value={question}

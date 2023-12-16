@@ -6,7 +6,7 @@ interface MessagesProps {
 
 const Messages: React.FC<MessagesProps> = ({ messages }) => {
   return (
-    <div>
+    <div className="relative scroll-overflow top-[10vh] bottom-[10vh]">
       {messages.map((message, index) => (
         <div
           className={message.fromUser ? "chat chat-end" : "chat chat-start"}
