@@ -1,33 +1,33 @@
-// Server code (Express.js as an example)
-import express from 'express';
-import * as sdk from 'microsoft-cognitiveservices-speech-sdk';
-import { OpenAIClient, AzureKeyCredential } from "@azure/openai";
+import { SpeechConfig, AudioConfig, SpeechRecognizer, ResultReason, CancellationReason } from 'microsoft-cognitiveservices-speech-sdk';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-const app = express();
-const port = 3000;
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'POST') {
+    const { audio } = req.body;
 
-app.use(express.json({ limit: '50mb' }));
+    try {
+      console.log("in here");
+      const audioBuffer = Buffer.from(audio, 'base64');
+      const speechConfig = SpeechConfig.fromSubscription('YOUR_SPEECH_KEY', 'YOUR_REGION');
+      speechConfig.speechRecognitionLanguage = 'en-US';
 
-app.post('/processAudio', async (req, res) => {
-    const audioData = req.body.audio;
+      const audioConfig = AudioConfig.fromAudioFileInput(audioBuffer);
+      const speechRecognizer = new SpeechRecognizer(speechConfig, audioConfig);
 
-    // Use Microsoft Cognitive Services Speech SDK to convert audio to text
-    const speechConfig = sdk.SpeechConfig.fromSubscription('YOUR_SPEECH_KEY', 'YOUR_SPEECH_REGION');
-    const audioConfig = sdk.AudioConfig.fromAudioFileInput(Buffer.from(audioData, 'base64'));
-    const speechRecognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+      speechRecognizer.recognized = (sender, event) => {
+        if (event.result.reason === ResultReason.RecognizedSpeech) {
+          res.status(200).json({ text: event.result.text });
+        } else if (event.result.reason === ResultReason.NoMatch) {
+          res.status(200).json({ error: 'No speech could be recognized' });
+        }
+      };
 
-    const result = await new Promise<string>((resolve) => {
-        speechRecognizer.recognizeOnceAsync((speechResult) => {
-            resolve(speechResult.reason === sdk.ResultReason.RecognizedSpeech ? speechResult.text : '');
-        });
-    });
-
-    // Use the text with the OpenAI GPT-3 model
-    // ...
-
-    res.json({ text: result });
-});
-
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
-});
+      await speechRecognizer.startContinuousRecognitionAsync();
+    } catch (error) {
+      console.error('Error processing audio:', error);
+      res.status(500).json({ error: 'Error processing audio' });
+    }
+  } else {
+    res.status(405).json({ error: 'Method Not Allowed' });
+  }
+}

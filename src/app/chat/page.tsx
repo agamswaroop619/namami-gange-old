@@ -4,7 +4,7 @@ import Navbar from "../components/navbar";
 import Textinput from "../components/textinput";
 import Messages from "../components/messages";
 
-function getChat(prompt: string = "Give a small introduction in of yours") {
+function getChat(prompt: string) {
   return fetch("/api/chat", {
     method: "POST",
     headers: {
@@ -21,7 +21,7 @@ export default function Home() {
     { text: string; fromUser: boolean }[]
   >([]);
   const [currentQuestion, setCurrentQuestion] = useState<string>(
-    "Give a small introduction in 10 words"
+    "Give a small introduction of yours in 10 words"
   );
 
   const handleReceiveMessage = (message: string, fromUser: boolean) => {
@@ -52,7 +52,7 @@ export default function Home() {
 
   useEffect(() => {
     console.log("currentQuestion changed:", currentQuestion);
-    if (currentQuestion !== "Give a small introduction in 10 words") {
+    if (currentQuestion !== "Give a small introduction of yours in 10 words") {
       updateMessages(currentQuestion);
     }
   }, [currentQuestion]);
