@@ -38,11 +38,15 @@ export default function Home() {
     });
   };
 
+  let temp_fix = 0;
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      getChat(currentQuestion).then((response) => {
-        handleReceiveMessage(response, false);
-      });
+    if (temp_fix === 0) temp_fix++;
+    else {
+      if (typeof window !== "undefined") {
+        getChat(currentQuestion).then((response) => {
+          handleReceiveMessage(response, false);
+        });
+      }
     }
   }, [currentQuestion]);
 
