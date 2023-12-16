@@ -1,11 +1,5 @@
 import React, { useState } from "react";
 
-declare global {
-  interface Window {
-    webkitSpeechRecognition: any;
-  }
-}
-
 interface TextinputProps {
   setQuestion: (question: string) => void;
   onAskQuestion: () => void;
@@ -27,14 +21,14 @@ const Textinput: React.FC<TextinputProps> = ({
   const handleRecording = () => {
     if (!isRecording) {
       try {
-        const recognition = new window.webkitSpeechRecognition();
+        const recognition = new (window as any).webkitSpeechRecognition();
         recognition.interimResults = true;
         recognition.lang = "en-US";
 
-        recognition.addEventListener("result", (e: SpeechRecognitionEvent) => {
+        recognition.addEventListener("result", (e: any) => {
           const transcript = Array.from(e.results)
-            .map((result: SpeechRecognitionResult) => result[0])
-            .map((result: SpeechRecognitionAlternative) => result.transcript)
+            .map((result: any) => result[0])
+            .map((result: any) => result.transcript)
             .join("");
 
           setQuestionLocal(transcript);
