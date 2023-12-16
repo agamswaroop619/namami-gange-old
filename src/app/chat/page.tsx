@@ -21,7 +21,7 @@ export default function Home() {
     { text: string; fromUser: boolean }[]
   >([]);
   const [currentQuestion, setCurrentQuestion] = useState<string>(
-    "Give a small introduction in of yours"
+    "Give a small introduction in 10 words"
   );
 
   const handleReceiveMessage = (message: string, fromUser: boolean) => {
@@ -52,7 +52,7 @@ export default function Home() {
 
   useEffect(() => {
     console.log("currentQuestion changed:", currentQuestion);
-    if (currentQuestion !== "Give a small introduction in of yours") {
+    if (currentQuestion !== "Give a small introduction in 10 words") {
       updateMessages(currentQuestion);
     }
   }, [currentQuestion]);
