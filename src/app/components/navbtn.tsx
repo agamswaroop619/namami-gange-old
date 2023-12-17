@@ -1,6 +1,6 @@
 import Image from "next/image";
 import next from "../components/icon-next.jpg";
 
-export default function Chachajifull() {
-  return <Image src={next} alt="" className="mix-blend-multiply scale-[0.1]" />;
+export default function Navbtn() {
+  return <Image src={next} alt="" className="mix-blend-multiply w-32 h-32" />;
 }
