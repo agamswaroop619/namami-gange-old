@@ -69,7 +69,7 @@ const Textinput: React.FC<TextinputProps> = ({
         }`}
       >
         REC
-        <span className={`${isRecording ? "text-white" : "text-white"}`}>
+        <span className={`${isRecording ? "text-white" : "text-red-500"}`}>
           ●
         </span>
       </button>

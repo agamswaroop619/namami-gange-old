@@ -6,7 +6,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const baseUrl = "https://newsdata.io/api/1/news";
   const params = new URLSearchParams();
   params.append("apikey", process.env.NEWSDATA_API_KEY!);
-  params.append("q", "namami AND gange");
+  params.append("q", "(namami AND gange) OR ganga");
   params.append("country", "in,bd,np");
   params.append("timezone", "Asia/Kolkata");
 
