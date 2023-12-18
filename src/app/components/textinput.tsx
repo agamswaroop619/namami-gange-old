@@ -44,6 +44,13 @@ const Textinput: React.FC<TextinputProps> = ({
     } else {
       setIsRecording(false);
       console.log("Recording stopped");
+      handleAskQuestion();
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleAskQuestion();
     }
   };
 
@@ -53,6 +60,7 @@ const Textinput: React.FC<TextinputProps> = ({
         type="text"
         value={question}
         onChange={(e) => setQuestionLocal(e.target.value)}
+        onKeyPress={handleKeyPress}
         placeholder="Chachaji se poochey"
         className="input input-bordered w-full rounded-tl-full rounded-bl-full"
       />
