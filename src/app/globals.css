@@ -25,3 +25,17 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+@keyframes fadeInScale {
+  from {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeInScale {
+  animation: fadeInScale 450ms ease-out;
+}
