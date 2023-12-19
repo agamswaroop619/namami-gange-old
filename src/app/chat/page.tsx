@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import Textinput from "../components/textinput";
 import Messages from "../components/messages";
+import Image from "next/image";
+import Namami from "../components/namami_gange.gif";
 
 function getChat(prompt: string) {
   return fetch("/api/chat", {
@@ -60,6 +62,13 @@ export default function Home() {
   return (
     <main className="flex min-h-[100vh] flex-col items-center justify-between min-w-[100vw] bg-[#B6D3FE] absolute">
       <Navbar />
+      <div className="flex flex-col items-center justify-center h-screen">
+        <Image
+          src={Namami}
+          alt=""
+          className="mix-blend-multiply opacity-75 z-[0]"
+        />
+      </div>
       <Messages messages={receivedMessages} />
       <Textinput setQuestion={setCurrentQuestion} onAskQuestion={() => {}} />
     </main>
