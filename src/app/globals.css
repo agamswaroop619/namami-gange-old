@@ -35,7 +35,51 @@ body {
     transform: scale(1);
   }
 }
+@keyframes moveRightToLeft {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-150px); /* Move to the right */
+  }
+  100% {
+    transform: translateX(0); /* Move back to the left */
+  }
+}
+
+@keyframes moveLeftToRight {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(150px); /* Move to the right */
+  }
+  100% {
+    transform: translateX(0); /* Move back to the left */
+  }
+}
+
+@keyframes rotateToAndFro {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
 
 .animate-fadeInScale {
   animation: fadeInScale 450ms ease-out;
+}
+.animate-moveRightToLeft {
+  animation: moveRightToLeft 4000ms ease-in;
+  animation-iteration-count: infinite;
+}
+.animate-moveLeftToRight {
+  animation: moveLeftToRight 4000ms ease-in;
+  animation-iteration-count: infinite;
+}
+.animate-rotateToAndFro {
+  animation: rotateToAndFro 4500ms ease-in-out;
+  animation-iteration-count: infinite;
 }
